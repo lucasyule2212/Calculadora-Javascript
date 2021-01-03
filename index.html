@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>  Calculadora JavaScript  </h1>
+        <h3>  Created by: Lucas Yule </h3>
+    </header>
+
+    <main>
+        <div class="box">
+
+            <input  id="display" type="text" name="teste" size="8" maxlength="8">
+           
+
+            <!-- linha1 -->
+            <div class="line">  
+               <button class="row" onclick="clickC()" style="color: red"> AC </button>
+
+               <!--  
+               <button class="row" onclick="clickP()"> ( ) </button> -->
+               <button class="row" onclick="clickRemoveLast()" style="color:red;">C</button>
+               <button class="row" onclick="clickPercent()" style="color: greenyellow;">%</button>
+                <button class="row" onclick="clickDiv()" style="color: greenyellow;">÷</button>
+                <button class="row" onclick="clickMultiply()" style="color: greenyellow;">x</button>
+                
+            </div>
+            <!-- linha2 -->
+            <div class="line2">                
+                <button class="row" onclick="click6()">6</button>
+                <button class="row" onclick="click7()">7</button>
+                <button class="row" onclick="click8()">8</button>
+                <button class="row" onclick="click9()">9</button>
+                <button class="row" onclick="clickMinus()" style="color: greenyellow;">-</button>
+               
+            </div>
+            <!-- linha3 -->
+            <div class="line3">
+                <button class="row" onclick="click2()">2</button>
+                <button class="row" onclick="click3()">3</button>
+                <button class="row" onclick="click4()">4</button>
+                <button class="row" onclick="click5()">5</button>
+                <button class="row" onclick="clickSum()" style="color: greenyellow;">+</button>                                        
+            </div>
+            <!-- linha4 -->
+            <div class="line4">  
+                <button class="row" onclick="clickNegative()" style="color: greenyellow;">+/-</button>
+                <button class="row" onclick="clickComma()">,</button>
+                <button class="row" onclick="click0()">0</button>
+                <button class="row" onclick="click1()">1</button>
+                <button class="row" onclick="clickEqual()" style="color: greenyellow;">=</button>                            
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+
+</body>
+</html>
