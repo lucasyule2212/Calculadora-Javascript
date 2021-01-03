@@ -30,23 +30,33 @@ if (bol==false) {
 } 
 
 }*/
-var actSize = 9;
+var actSize = 10;
 
-var num1;
-var num2;
+var num1="";
+var num2="";
 var result;
 var operation;
 
-function isNull() {
+function getNum1() {
+    num1 = document.getElementById("display").value;
+}
+function getNum2() {
+    num2 = document.getElementById("display").value;
+}
+
+
+function isNotNull() {
     if (document.getElementById("display").value!='') {
         return true;
     }else{
-        return false;
+        if (num1=="") {
+            return alert("Digite um número primeiro!");
+        }       
     }
 }
 
 function addSize() {
-    if (actSize<10) {
+    if (actSize<9) {
         actSize+=2;
     }
 }
@@ -60,37 +70,41 @@ function sizeValidation() {
 }
 
 /* Falta implementar a açao*/
-function clickPercent() {
-    
-    if (isNull()) {
-        num1=document.getElementById("display").value;
-        clickC();
-        while (true) {
-            if (isNull()) {
-                num2=document.getElementById("display").value;
-            }else{
-                alert("Digite outro número!")
-            }
-        }
-    }
+function clickPercent() {  
+    if (isNotNull()) {
+        getNum1();
+        clickC();  
 
+        operation=0;
+                    
+    }
+ 
 }
 /* Falta implementar a açao*/
 function clickDiv() {
-    
+    if (isNotNull()) {
+        getNum1();
+        clickC();  
+        operation=1;
+                   
+    }
+  
 }
 /* Falta implementar a açao*/
 function clickMultiply() {
-    
+    if (isNotNull()) {
+        getNum1();
+        clickC();    
+        operation=2;
+                
+    }
+  
 }
 
-
 function click6() {
-
     if (sizeValidation()==true) {
         document.getElementById("display").value+="6";
-    }
-    
+    }    
 }
 
 function click7() {
@@ -115,9 +129,13 @@ function click9() {
 }
 /* Falta implementar a açao*/ 
 function clickMinus() {
-    if (isNull()) {
-        
+    if (isNotNull()) {
+        getNum1();
+        clickC();    
+        operation=3;
+                
     }
+  
 }
 
 function click2() {
@@ -146,18 +164,52 @@ function click5() {
 }
 /* Falta implementar a açao*/ 
 function clickSum() {
-    
+    if (isNotNull()) {
+        getNum1();
+        clickC();    
+        operation=4
+    }
+  
 }
+
+function setNumNegative(num) {
+   let numNegative="-";
+    numNegative+=num;
+    document.getElementById("display").value=numNegative;
+}
+function setNumPositive(num) {
+    let numPositive=parseInt(num,10);
+    numPositive*=-1;
+    document.getElementById("display").value=numPositive;
+ }
 
 /* Falta implementar a açao*/ 
 function clickNegative() {
-    
+    if (isNotNull()) {
+       var num = document.getElementById("display").value; 
+        if (num.charAt(0)!="-") {
+            setNumNegative(num);
+        }else{
+            setNumPositive(num);
+        }
+       
+    }
 }
 /* Falta implementar a açao*/ 
 function clickComma() {
-    if (isNull()) {
+
+    if (isNotNull()) {
         addSize();
     document.getElementById("display").value+=",";
+    let numDec=document.getElementById("display").value;
+    numDec=parseFloat(numDec);
+
+    if (num2!="") {
+        num2=numDec;
+    }else{
+        num1=numDec;
+    }
+
     }
 }
 function click0() {
@@ -172,7 +224,54 @@ function click1() {
     }
     
 }
+
 /* Falta implementar a açao*/ 
 function clickEqual() {
-    
+    getNum2();
+    num1=parseFloat(num1);
+    num2=parseFloat(num2)
+   
+    switch (operation) {
+        
+        // percent
+        case 0 :
+            result=(num2*num1)/100;
+            showResult(result)
+            break;
+        // div
+        case 1:
+            result=(num1/num2);
+            showResult(result)
+            break;
+        // multi
+        case 2:
+            result=num1*num2;
+            showResult(result);
+            break;
+        // minus
+        case 3:
+            result=num1-num2;
+            showResult(result);
+            break; 
+        // sum
+        case 4:
+            result=num1+num2;
+            showResult(result);
+         break;  
+
+        default:
+            alert("Execute uma operaçao válida!")
+            break;
+    }
+}
+function getLength(result) {
+    let result1=result;
+    return JSON.stringify(result1).length();
+}
+function showResult(result) {
+   if (JSON.stringify(result).length<actSize) {
+       document.getElementById("display").value=result;
+   }else{
+       alert("O número ultrapassa a casa dos milhões!")
+   }
 }
