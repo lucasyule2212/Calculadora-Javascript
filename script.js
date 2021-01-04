@@ -2,6 +2,13 @@ function clickC() {
     document.getElementById("display").value='';
 }
 
+function numValidation() {
+  if (isNaN(document.getElementById("display").value)) {
+      alert("A entrada precisa ser um número válido!")
+      clickC();
+  }
+}
+
 function clickRemoveLast() {
     let text = document.getElementById("display").value;
     let textRem = text.substring(0,text.length-1)
@@ -36,6 +43,9 @@ var num1="";
 var num2="";
 var result;
 var operation;
+
+
+
 
 function getNum1() {
     num1 = document.getElementById("display").value;
