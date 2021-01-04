@@ -200,7 +200,7 @@ function clickComma() {
 
     if (isNotNull()) {
         addSize();
-    document.getElementById("display").value+=",";
+    document.getElementById("display").value+=".";
     let numDec=document.getElementById("display").value;
     numDec=parseFloat(numDec);
 
